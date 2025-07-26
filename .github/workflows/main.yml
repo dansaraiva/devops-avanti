@@ -11,8 +11,8 @@ on:
   workflow_dispatch: # Permite o acionamento manual
 
 env:
-  DOCKER_USER: taotreinatec
-  DOCKER_IMAGE_NAME: ${{ vars.DOCKER_USER || 'dansaraiva' }}/ms-saudacoes-aleatorias
+  DOCKER_USER: DOCKERHUB_USERNAME
+  DOCKER_IMAGE_NAME: ${{ vars.DOCKERHUB_USERNAME || 'dansaraiva' }}/ms-saudacoes-aleatorias
   DOCKER_IMAGE_TAG: 1.0.${{ github.run_id }}
   SERVICE_NAME: saudacoes-aleatorias
 
