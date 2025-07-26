@@ -11,7 +11,7 @@ on:
   workflow_dispatch: # Permite o acionamento manual
 
 env:
-  DOCKER_USER: DOCKERHUB_USERNAME
+  DOCKER_USER: dansaraiva
   DOCKER_IMAGE_NAME: ${{ vars.DOCKERHUB_USERNAME || 'dansaraiva' }}/ms-saudacoes-aleatorias
   DOCKER_IMAGE_TAG: 1.0.${{ github.run_id }}
   SERVICE_NAME: saudacoes-aleatorias
@@ -97,9 +97,9 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ env.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }} # Segredo configurado no GitHub
-
+        username: ${{ env.DOCKERHUB_USERNAME }} # <-- Variável correta
+        password: ${{ secrets.DOCKERHUB_TOKEN }} # O token virá dos segredos do repositório
+        
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
